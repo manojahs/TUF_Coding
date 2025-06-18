@@ -40,6 +40,24 @@ for (int i = 1; i < array.Length; i++)
 Console.WriteLine("The largest number is: " + largest);
 Console.WriteLine("The second largest number is: " + secondLargest);
 
+Check the array is it sorted or not
+--------------------------------------
+
+int[] array = { 1,3,2};
+
+Console.WriteLine( checkArray(array));
+
+ static bool checkArray(int[] array)
+{
+   
+for (int i = 0; i < array.Length-1; i++)
+{
+    if (array[i] > array[i + 1])
+        return false;
+}
+
+return true;
+}
 
 
 
