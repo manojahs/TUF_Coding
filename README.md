@@ -60,6 +60,30 @@ return true;
 }
 
 
+Remove Duplicates
+----------------------
+int[] sortedArray = { 2, 2,  3, 4, 4, 5, 6, 6, 7 };
+
+int[] uniqueSorted = RemoveDuplicates(sortedArray);
+Console.WriteLine("Unique elements in sorted array:");
+foreach (var item in uniqueSorted)
+{
+    Console.Write(item + " ");
+}
+
+// Removes duplicates from a sorted array
+static int[] RemoveDuplicates(int[] arr)
+{
+    if (arr.Length == 0)
+        return new int[0];
+     List<int> result = new List<int> { arr[0] };
+    for (int i = 1; i < arr.Length; i++)
+    {
+        if (arr[i] != arr[i - 1])
+            result.Add(arr[i]);
+    }
+     return result.ToArray();
+}
 
 
 
