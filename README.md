@@ -109,6 +109,43 @@ public int[] TwoSum(int[] nums, int target)
     return new int[0]; // if no solution found
 }
 
+--Frequncy of duplicate character count
+using System;
+class Program
+{
+    static void Main()
+    {
+        string[] a = { "Black", "Brown", "Black","Yellow","Yellow" };
+
+        Dictionary<string,int> keyValuePairs = new Dictionary<string,int>();
+        foreach(var v in a)
+        {
+            //if (keyValuePairs.ContainsKey(v))
+            //{
+            //    keyValuePairs[v]++;
+            //}
+            //else
+            //{
+            //    {
+            //        keyValuePairs[v] = 1;
+            //    }
+            //}
+
+            keyValuePairs[v] = keyValuePairs.GetValueOrDefault(v ,0) + 1;
+        }
+
+       var vss= keyValuePairs.OrderByDescending(x => x.Key).Where(a => a.Value > 1).Select(a => a.Key);
+        
+
+        foreach(var vs in vss)
+        {
+            Console.WriteLine(vs);
+
+        }
+
+    }
+}
+
 
 
 
