@@ -146,6 +146,60 @@ class Program
     }
 }
 
+Balanced or not
+----------------
+
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    // Function to check if brackets are balanced
+    public static bool IsBalanced(string input)
+    {
+        Stack<char> stack = new Stack<char>();
+
+        foreach (char c in input)
+        {
+            // If opening bracket → push
+            if (c == '{' || c == '[' || c == '(')
+            {
+                stack.Push(c);
+            }
+            // If closing bracket → check
+            else if (c == '}' || c == ']' || c == ')')
+            {
+                if (stack.Count == 0)
+                    return false; // No opening for this closing
+
+                char top = stack.Pop(); // last opened
+
+                // Mismatch check
+                if ((c == '}' && top != '{') ||
+                    (c == ']' && top != '[') ||
+                    (c == ')' && top != '('))
+                {
+                    return false; // Wrong pair
+                }
+            }
+        }
+
+        // At the end, stack must be empty
+        return stack.Count == 0;
+    }
+
+    // Main method
+    public static void Main()
+    {
+        string[] tests = { "([]{})", "([)]", "((()))", "{[()]}", "(]" };
+
+        foreach (var test in tests)
+        {
+            bool result = IsBalanced(test);
+            Console.WriteLine($"{test} -> {(result ? "Balanced" : "Not Balanced")}");
+        }
+    }
+}
 
 
 
