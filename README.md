@@ -202,6 +202,37 @@ class Program
 }
 
 
+//fizz buzz problem
+-----------------
+
+using System.Text;
+
+var dict = new Dictionary<int, string>()
+{
+    {3,"Fizz"},
+    {5,"Buzz"},
+    {11,"Eleven"},
+    {7,"Seven"}
+};
+
+for (int i = 1; i <= 100; i++)
+{
+   string res = string.Empty;
+    foreach (var item in dict)
+    {
+        if (i % item.Key == 0)
+        {
+            res = res+""+item.Value;
+        }
+    }
+
+    if (res.Length == 0)
+    {
+        res =i.ToString();
+    }
+
+    Console.WriteLine(res.ToString());
+}
 
 
 
