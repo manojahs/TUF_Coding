@@ -382,7 +382,71 @@ class Program
     }
 }
 
+Rotate the array using recursrion (Left and Right by k element) - Sliding Window
+---------------------------------------------------------------------------------
 
+using System;
+
+class Program
+{
+    // Reverse helper
+    static void Reverse(int[] arr, int start, int end)
+    {
+        while (start < end)
+        {
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+            start++;
+            end--;
+        }
+    }
+
+    // Left Rotate by k
+    static void LeftRotate(int[] arr, int k)
+    {
+        int n = arr.Length;
+        k = k % n; // handle k > n
+
+        Reverse(arr, 0, k - 1);     // Step 1: reverse first k
+        Reverse(arr, k, n - 1);     // Step 2: reverse rest
+        Reverse(arr, 0, n - 1);     // Step 3: reverse entire array
+    }
+
+    // Right Rotate by k
+    static void RightRotate(int[] arr, int k)
+    {
+        int n = arr.Length;
+        k = k % n;
+
+        Reverse(arr, 0, n - 1);         // Step 1: reverse entire array
+        Reverse(arr, 0, k - 1);         // Step 2: reverse first k
+        Reverse(arr, k, n - 1);         // Step 3: reverse rest
+    }
+
+    static void PrintArray(int[] arr)
+    {
+        foreach (var num in arr)
+            Console.Write(num + " ");
+        Console.WriteLine();
+    }
+
+    static void Main()
+    {
+        int[] arr1 = { 1, 2, 3, 4, 5, 6, 7 };
+
+        Console.WriteLine("Original Array:");
+        PrintArray(arr1);
+
+        LeftRotate(arr1, 2);  // Rotate left by 2
+        Console.WriteLine("After Left Rotate by 2:");
+        PrintArray(arr1);
+
+        RightRotate(arr1, 2); // Rotate right by 2 (brings back original)
+        Console.WriteLine("After Right Rotate by 2:");
+        PrintArray(arr1);
+    }
+}
 
 
 
