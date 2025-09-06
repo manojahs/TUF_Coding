@@ -354,6 +354,33 @@ class Program
     }
 }
 
+Using Iteration 0(n)
+-------------------
+using System;
+
+class Program
+{
+    static void FibonacciIterative(int n)
+    {
+        int a = 0, b = 1, c;
+
+
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write(a + " ");
+            c = a + b;    
+            a = b;        
+            b = c;
+        }
+    }
+
+    static void Main()
+    {
+        int n = 10; // print first 10 Fibonacci numbers
+        Console.WriteLine($"Fibonacci series up to {n} terms:");
+        FibonacciIterative(n);
+    }
+}
 
 
 
