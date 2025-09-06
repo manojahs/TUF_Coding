@@ -448,6 +448,55 @@ class Program
     }
 }
 
+Using Iteration Method
+-------------------------
+
+using System;
+
+class Program
+{
+    static string LeftRotate(int[] arr, int k)
+    {
+        int n = arr.Length;
+        k = k % n;  // Handle k > n
+        int[] rotated = new int[n];
+
+        // Copy into new rotated array
+        for (int i = 0; i < n; i++)
+        {
+            rotated[i] = arr[(i + k) % n]; // shift left
+        }
+
+        return string.Join(" ", rotated);
+    }
+
+    static string RightRotate(int[] arr, int k)
+    {
+        int n = arr.Length;
+        k = k % n;
+        int[] rotated = new int[n];
+
+        for (int i = 0; i < n; i++)
+        {
+            rotated[(i + k) % n] = arr[i]; // shift right
+        }
+
+        return string.Join(" ", rotated);
+    }
+
+    static void Main()
+    {
+        int[] arr = { 1, 2, 3, 4, 5 };
+
+        Console.WriteLine("Original: " + string.Join(" ", arr));
+
+        string leftRotated = LeftRotate(arr, 2);
+        Console.WriteLine("Left Rotate by 2: " + leftRotated);
+
+        string rightRotated = RightRotate(arr, 2);
+        Console.WriteLine("Right Rotate by 2: " + rightRotated);
+    }
+}
 
 
 
