@@ -408,9 +408,9 @@ class Program
         int n = arr.Length;
         k = k % n; // handle k > n
 
-        Reverse(arr, 0, k - 1);     // Step 1: reverse first k
-        Reverse(arr, k, n - 1);     // Step 2: reverse rest
-        Reverse(arr, 0, n - 1);     // Step 3: reverse entire array
+        Reverse(arr, 0, n - 1);     // Step 1: reverse first k     [7,6,5,4,3,2,1] 
+        Reverse(arr, 0, n-k-1);  //(0,4)   // Step 2: reverse rest          [3,4,5,6,7,2,1]
+        Reverse(arr, n-k, n-1); 
     }
 
     // Right Rotate by k
