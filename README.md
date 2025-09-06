@@ -234,8 +234,65 @@ for (int i = 1; i <= 100; i++)
     Console.WriteLine(res.ToString());
 }
 
+Find the longest subarray length with unique values inside a given array.
+---------------------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        int[] arr = { 1, 2, 3, 1, 2 };
+        Console.WriteLine("Longest length = " + LongestUniqueSubarray(arr));
+
+        string s = "abcdabcbb";
+        Console.WriteLine("Longest substring length = " + LongestUniqueSubstring(s));
+    }
+
+    static int LongestUniqueSubarray(int[] arr)
+    {
+        HashSet<int> set = new HashSet<int>();
+        int left = 0, maxLen = 0;
+
+        for (int right = 0; right < arr.Length; right++)
+        {
+            while (set.Contains(arr[right]))
+            {
+                set.Remove(arr[left]);
+                left++;
+            }
+
+            set.Add(arr[right]);
+            maxLen = Math.Max(maxLen, right - left + 1);
+        }
+
+        return maxLen;
+    }
 
 
+
+    static int LongestUniqueSubstring(string s)
+    {
+        HashSet<char> set = new HashSet<char>();
+        int left = 0, maxLen = 0;
+
+        for (int right = 0; right < s.Length; right++)
+        {
+            while (set.Contains(s[right]))
+            {
+                set.Remove(s[left]);
+                left++;
+            }
+
+            set.Add(s[right]);
+            maxLen = Math.Max(maxLen, right - left + 1);
+        }
+
+        return maxLen;
+    }
+}
 
 
 
