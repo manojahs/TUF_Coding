@@ -294,6 +294,66 @@ class Program
     }
 }
 
+Fib using Recursion but it takes 2 of n and its very slow
+----------------------------------------
+using System;
+class Program
+{
+    static int Fibonacci(int n)
+    {
+        if (n == 0) return 0;   // base case
+        if (n == 1) return 1;   // base case
+
+        // recursive case
+        return Fibonacci(n - 1) + Fibonacci(n - 2);
+    }
+
+    static void Main()
+    {
+        int n = 10; // print first 10 numbers
+        Console.WriteLine($"Fibonacci series up to {n} terms:");
+
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write(Fibonacci(i) + " ");
+        }
+    }
+}
+
+OR O(n)
+-----------
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static Dictionary<int, int> memo = new Dictionary<int, int>();
+    static int Fibonacci(int n)
+    {
+        if (n == 0) return 0;
+        if (n == 1) return 1;
+
+        // Check cache
+        if (memo.ContainsKey(n))
+            return memo[n];
+
+        // Compute and store in cache
+        int result = Fibonacci(n - 1) + Fibonacci(n - 2);
+        memo[n] = result;
+        return result;
+    }
+
+    static void Main()
+    {
+        int n = 10; // print first 10 Fibonacci numbers
+        Console.WriteLine($"Fibonacci series up to {n} terms:");
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write(Fibonacci(i) + " ");
+        }
+    }
+}
+
 
 
 
