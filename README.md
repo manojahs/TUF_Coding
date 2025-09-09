@@ -499,6 +499,61 @@ class Program
 }
 
 
+Find the Length ,Sum and Longest subarray in the given array without repeatative
+----------------------------------------------------------------------------------
+
+
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        int[] arr = { 1, 2, 3, 1, 2, 9, 5, 7, 4, 8, 3 };
+        LongestUniqueSubarray(arr);
+    }
+
+    static void LongestUniqueSubarray(int[] arr)
+    {
+        var set = new SortedSet<int>();
+        int left = 0;
+        int sum = 0;
+        int maxLength = 0;
+
+
+        for (int right = 0; right < arr.Length; right++)
+        {
+            while (set.Contains(arr[right]))
+            {
+                set.Remove(arr[left]);
+                left++;
+            }
+
+            set.Add(arr[right]);
+ 
+            maxLength = Math.Max(maxLength, right - left + 1);
+        }
+        int n = set.Count;
+        int[] result = new int[n];
+        foreach (var item in set)
+        {
+            sum += item;
+        }
+
+
+        Console.WriteLine("substring values are " + string.Join(", ", set));
+        Console.WriteLine("Sum of substring is " + sum);
+        Console.WriteLine("Length of substring is " + maxLength);
+
+    }
+
+
+}
+
+
+
+
 
 
 
