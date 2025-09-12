@@ -552,6 +552,29 @@ class Program
 }
 
 
+Reverse a word in a sentence
+-----------------------------
+
+class Program
+{
+    static void Main()
+    {
+        string value = "Manoj is the SE at Aurigo";
+        foreach(var item in value.Split(' '))
+        {
+            ReverseString(item);
+        }
+    }
+
+    public static void ReverseString(string values)
+    {
+        for(int i =values.Length-1;i>=0;i--)
+        {
+            Console.Write(values[i]+"");
+        }
+        Console.Write(" ");
+    }
+}
 
 
 
