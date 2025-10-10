@@ -576,6 +576,36 @@ class Program
     }
 }
 
+Find the duplicate value in the given string
+-----------------------------------------------
+
+using System;
+using System.Collections.Generic;
+
+public class HelloWorld
+{
+    public static void Main(string[] args)
+    {
+        string input = "csharp programming";
+        Dictionary<char, int> charCount = new Dictionary<char, int>();
+
+        foreach (char ch in input)
+        {
+            if (ch == ' ') continue; // Skip spaces
+            if (charCount.ContainsKey(ch))
+                charCount[ch]++;
+            else
+                charCount[ch] = 1;
+        }
+
+        Console.WriteLine("Duplicate characters:");
+        foreach (var item in charCount)
+        {
+            if (item.Value > 1)
+                Console.WriteLine(item.Key + " occurs " + item.Value + " times");
+        }
+    }
+}
 
 
 
